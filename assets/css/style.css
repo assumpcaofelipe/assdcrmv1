@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f2f2;
+}
+
+.container{
+    display: grid;
+    grid-template-areas:
+    "resumo  resumo resumo"
+    "fixo fixo fixo"
+    "variavel variavel variavel";
+    grid-template-rows: auto auto auto;
+    width: 100%;
+    max-width: 1920px;
+    margin: auto;
+    height: 100vh;
+    background-color: rgb(199, 199, 199);
+
+    
+}
+
+.resumo{
+ grid-area:resumo;
+ height: 50px;
+ background-color: rgb(228, 224, 224);
+ 
+}

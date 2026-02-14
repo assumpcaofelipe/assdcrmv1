@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f2f2;
+}
+
+.container {
+  width: 600px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 3px;
+  padding: 10px;
+}
+
+form h2 {
+  text-align: center;
+  font-family: "Fira Code", monospace;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+label {
+  font-family: "Fira Code", monospace;
+  padding: 5px;
+  font-weight: 500;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 350px;
+  height: 35px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: solid 1px #ff4500;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: rgb(14, 13, 13);
+  outline-color: #f3f3f3;
+}
+
+/*Personalização input*/
+
+input:focus {
+  border: 1px solid #ff4500;
+  outline: 0;
+}
+
+input[type="submit"] {
+  width: 350px;
+  height: 52px;
+  background-color: #ff4500;
+  border: 1px #ff4500;
+  border-radius: 6px;
+  font-family: "Fira Code", monospace;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+a {
+  cursor: pointer;
+  color: #0082a5;
+  font-family: "Fira Code", monospace;
+  font-weight: 700;
+}
+
+/*AVISO DE ERROS*/
+
+.msg {
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 10px auto;
+  max-width: 300px;
+  text-align: center;
+}
+.sucesso {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+.alerta {
+  color: #856404;
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+}
+.erro {
+  color:red;
+  background-color: #f8d7da;
+  border: 1px solid red;
+  background-color: rgb(220, 216, 216);
+  color:red;
+}
+
+.showPassword {
+  display: block;
+}
+
+.update-password {
+  text-align: center;
+  margin-top: 10px;
+}
