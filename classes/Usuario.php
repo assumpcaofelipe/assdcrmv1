@@ -92,18 +92,13 @@ class Usuario
     }
    
 
-    public function excluir($email)
+    public function excluir($id)
     {
-       if($this->existeEmail($email)){
-          $sql = "DELETE FROM WHERE usuarios email = :email";     
+          $sql = "DELETE FROM usuarios WHERE  id = :id";     
           $sql = $this->pdo->prepare($sql);
-          $sql->bindValue(':email', $email);
+          $sql->bindValue(':id', $id);
           $sql->execute();
-         return true;
-
-       } else{
-         return false;
-       }
+       
     }
 
 }

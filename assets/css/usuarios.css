@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  height: 100vh;
+  background-color: #f0f2f2;
+}
+
+.container {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+}
+
+.container h2 {
+  text-align: center;
+  font-family: "Fira Code", monospace;
+  margin-bottom: 20px;
+}
+
+/*Estilo de da Tabela*/
+
+tr {
+  font-family: "Fira Code", monospace;
+}
