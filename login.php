@@ -1,11 +1,11 @@
 <?php
 
-/*
-session_start();
-require_once 'config.php';
-require_once 'classes/Auth.php';
 
-$auth = new Auth($db);
+//session_start();
+//require_once 'config.php';
+//require_once 'classes/Auth.php';
+
+//$auth = new Auth($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($auth->login($_POST['email'], $_POST['password'])) {
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-?>
+?> 
 
 
 
@@ -66,5 +66,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </body>
 
 </html>
-
-*/
