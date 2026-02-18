@@ -29,7 +29,6 @@ class Usuario
     { 
         $senhaHash = password_hash($senha, PASSWORD_BCRYPT); // senha criprotogrfada;
 
-
         if ($this->existeEmail($email) === false) {
          $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
          $sql = $this->pdo->prepare($sql);

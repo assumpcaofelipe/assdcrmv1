@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'config.php';
 require_once 'classes/Usuario.php';
 $usuario = new Usuario($db);
@@ -30,15 +31,17 @@ $lista = $usuario->retornarListaUsuarios();
          <div class="title">
              <h2>Usuários</h2>
             <button id="openModal">Adicionar</button>
+            
          </div>
     
+        
 
 
         <dialog>
 
          <button id="closedModal"><i class="bi bi-x-lg"></i></button>
 
-            <form id="form" method="post">
+            <form id="form" method="POST" action="adicionar_usuario.php">
 
                 <label>Nome</label>
                 <input type="nome" name="nome" id="" >
@@ -47,7 +50,7 @@ $lista = $usuario->retornarListaUsuarios();
                 <input type="email" name="email" id="" >
 
                 <label>Senha</label>
-                <input type="password" name="password">
+                <input type="password" name="senha">
 
                 <a class="showPassword" id="click" href="">Mostrar senha</a>
 
@@ -64,7 +67,6 @@ $lista = $usuario->retornarListaUsuarios();
     <table class="table responsive table-hover">
         <thead>
             <tr>
-                <th scope="col">ID</th>
                 <th scope="col">Nome</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Ações</th>
@@ -72,7 +74,6 @@ $lista = $usuario->retornarListaUsuarios();
         </thead>
         <?php foreach ($lista as $usuario): ?>
             <tr>
-                <td><?= $usuario['id']; ?></td>
                 <td><?= $usuario['nome']; ?></td>
                 <td><?= $usuario['email']; ?></td>
                 <td>
