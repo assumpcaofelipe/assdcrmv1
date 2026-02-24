@@ -30,6 +30,12 @@ $lista = $usuario->retornarListaUsuarios();
 
          <div class="title">
              <h2>Usuários</h2>
+             <?php if(!empty($_SESSION['msg'])){
+              echo $_SESSION['msg']; 
+              echo $_SESSION['msg'] = '';
+             }            
+            ?>
+
             <button id="openModal">Adicionar</button>
             
          </div>

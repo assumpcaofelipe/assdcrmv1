@@ -14,9 +14,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['nome']) && !empty($_P
  $nome = ucwords(strtolower($nome));
  $usuario->criarUsuario($nome, $email, $senha);
 
-$_SESSION['msg']  = "Usuário <strong>{$nome}</strong> cadastrado com sucesso!";
+$_SESSION['msg']  = "<div class='alert alert-person-sucess ' role='alert'>
+ Usuário cadastrado com sucesso!
+</div>";
 
  header("Location: usuarios.php");
  exit;
 
+} else{
+  $_SESSION['msg']  = "<div class='alert alert-person-danger ' role='alert'>
+  Preencha todos os campos:nome, e-mail e senha.
+</div>";
+ header("Location: usuarios.php");
+ exit;
 }
