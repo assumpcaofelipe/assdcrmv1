@@ -93,7 +93,7 @@ class Usuario
 
     public function excluir($id)
     {
-          $sql = "DELETE FROM usuarios WHERE  id = :id";     
+          $sql = "DELETE FROM usuarios WHERE id = :id";     
           $sql = $this->pdo->prepare($sql);
           $sql->bindValue(':id', $id);
           $sql->execute();

@@ -32,7 +32,7 @@ $lista = $usuario->retornarListaUsuarios();
              <h2>Usuários</h2>
              <?php if(!empty($_SESSION['msg'])){
               echo $_SESSION['msg']; 
-              echo $_SESSION['msg'] = '';
+              unset($_SESSION['msg']);
              }            
             ?>
 
