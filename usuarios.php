@@ -28,35 +28,37 @@ $lista = $usuario->retornarListaUsuarios();
 
     <div class="container">
 
-         <div class="title">
-             <h2>Usuários</h2>
-             <?php if(!empty($_SESSION['msg'])){
-              echo $_SESSION['msg']; 
-              unset($_SESSION['msg']);
-             }            
+        <div class="title">
+            <h2>Usuários</h2>
+            <?php if (!empty($_SESSION['msg'])) {
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
+            }
             ?>
 
             <button id="openModal">Adicionar</button>
-            
-         </div>
-    
-        
+
+        </div>
+
+
 
 
         <dialog>
 
-         <button id="closedModal"><i class="bi bi-x-lg"></i></button>
+            <button id="closedModal"><i class="bi bi-x-lg"></i></button>
 
             <form id="form" method="POST" action="adicionar_usuario.php">
 
+                <input type="hidden" name="id" id="id">
+
                 <label>Nome</label>
-                <input type="nome" name="nome" id="" >
+                <input type="text" name="nome" id="nome">
 
                 <label>E-mail</label>
-                <input type="email" name="email" id="" >
+                <input type="email" name="email" id="email">
 
                 <label>Senha</label>
-                <input type="password" name="senha">
+                <input type="password" name="senha" id="senha">
 
                 <a class="showPassword" id="click" href="">Mostrar senha</a>
 
@@ -64,8 +66,8 @@ $lista = $usuario->retornarListaUsuarios();
 
 
             </form>
-    
-        </div>
+
+    </div>
 
 
     </dialog>
@@ -83,12 +85,21 @@ $lista = $usuario->retornarListaUsuarios();
                 <td><?= $usuario['nome']; ?></td>
                 <td><?= $usuario['email']; ?></td>
                 <td>
-                    <a href="editar.php?id=<?= $usuario['id']; ?>">
+                    <button
+                        class="editar"
+                        title="Editar Usuário"
+                        data-id="<?= $usuario['id']; ?>"
+                        data-nome="<?= $usuario['nome']; ?>"
+                        data-email="<?= $usuario['email']; ?>"
+                        data-senha="<?= $usuario['senha']; ?>">
                         <i class="bi bi-pencil"></i>
-                    </a>
+                    </button>
+
                     <a href="excluir.php?id=<?= $usuario['id']; ?>"
                         onclick="return confirm(' Essa ação é irreversível. Deseja continuar?')">
-                        <i class="bi bi-trash3"></i>
+                        <button
+                            title="Excluir Usuário"
+                            class="delete"> <i class="bi bi-trash3"></i> </button>
                     </a>
 
 

@@ -65,6 +65,21 @@ tr {
   border: solid 2px #151515;
 }
 
+/* Botões editar e excluir*/
+
+.editar{
+  background-color: #ff4500;
+  border: solid 2px #151515;
+  color: #f3f3f3;
+}
+
+.delete{
+  background-color:#D9072D;
+  border: solid 2px #252525;
+  color: #f3f3f3;
+}
+
+
 /*Dialog*/
 
 dialog::backdrop{
@@ -106,10 +121,10 @@ label {
   
 }
 
-input[type="nome"],
+input[type="text"],
 input[type="email"],
 input[type="password"] {
-  width: 280px;
+  width: 350px;
   height: 35px;
   border-radius: 6px;
   margin-bottom: 20px;
@@ -150,6 +165,10 @@ a {
   font-family: "Fira Code", monospace;
   font-weight: 700;
 }
+
+
+/* Botões editar e excluir*/
+
 
 /*ALERTAS DE AVISO*/
 
