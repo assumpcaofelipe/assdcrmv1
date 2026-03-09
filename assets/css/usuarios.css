@@ -43,8 +43,8 @@ tr {
 
 #openModal{
  width: 220px;
-  height: 35px;
-  border-radius: 6px;
+  height: 40px;
+  border-radius:2px;
   margin-bottom: 20px;
   background-color: #ff4500;
   border: solid 2px #151515;
@@ -174,7 +174,7 @@ a {
 
 .alert-person-sucess  {
     background-color: #04D976 !important;
-    border: solid 2px #151515;
+    border: solid 2px #04D976;
     color: #ffffff !important;
     font-weight: 500;
     border-radius: 8px;

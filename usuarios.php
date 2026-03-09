@@ -91,7 +91,7 @@ $lista = $usuario->retornarListaUsuarios();
                         data-id="<?= $usuario['id']; ?>"
                         data-nome="<?= $usuario['nome']; ?>"
                         data-email="<?= $usuario['email']; ?>"
-                        data-senha="<?= $usuario['senha']; ?>">
+                        >
                         <i class="bi bi-pencil"></i>
                     </button>
 

@@ -8,11 +8,11 @@ const btnClose = document.querySelector('dialog button');
 
 // Abrir modal ao adicionar.
 
-
 btn.onclick = function () { 
-document.querySelector('#id').value = ''
-document.querySelector('#nome').value = ''
-document.querySelector('#email').value = '';
+    document.getElementById('id').value = ''
+    document.getElementById('nome').value = ''
+    document.getElementById('email').value = ''
+    document.getElementById('senha').value = ''
 
 modal.showModal()  
 
@@ -22,6 +22,7 @@ modal.showModal()
 btnClose.onclick = function () {
     modal.close()
 }
+
 
 
 // Botões Editar
@@ -42,6 +43,10 @@ botoesEditar.forEach(function(botao){
     })
 
 })
+
+
+
+
 
 
 
