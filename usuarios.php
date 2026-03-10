@@ -1,7 +1,19 @@
 <?php
 session_start();
+require_once 'classes/Auth.php';
 require_once 'config.php';
 require_once 'classes/Usuario.php';
+
+//Verificação parao usuário está logado:
+
+$auth = new Auth($db);
+
+if (!$auth->check()) {
+    header('Location: login.php');
+    exit;
+}
+ 
+// Retornar lista de usuários   
 $usuario = new Usuario($db);
 $lista = $usuario->retornarListaUsuarios();
 
@@ -47,8 +59,9 @@ $lista = $usuario->retornarListaUsuarios();
 
             <button id="closedModal"><i class="bi bi-x-lg"></i></button>
 
-            <form id="form" method="POST" action="adicionar_usuario.php">
+            <form id="form" method="POST" action="post_usuario.php">
 
+                
                 <input type="hidden" name="id" id="id">
 
                 <label>Nome</label>

@@ -1,15 +1,14 @@
 <?php
 
+session_start();
+require_once 'config.php';
+require_once 'classes/Auth.php';
 
-//session_start();
-//require_once 'config.php';
-//require_once 'classes/Auth.php';
-
-//$auth = new Auth($db);
+$auth = new Auth($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($auth->login($_POST['email'], $_POST['password'])) {
-    header('Location: index.php');
+    header('Location: usuarios.php');
     exit;
   } else {
     header('Location: login.php');
@@ -18,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-?> 
+?>
 
 
 
@@ -41,9 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       <h2>LOGIN</h2><br />
 
-      <?php if (!empty($_SESSION['erro'])): ?>
-        <?= $_SESSION['erro']; ?>
-        <?php unset($_SESSION['erro']); ?>
+      <?php if (!empty($_SESSION['msg'])): ?>
+
+
+
+        <?= $_SESSION['msg']; ?>
+        <?php unset($_SESSION['msg']); ?>
       <?php endif; ?>
 
       <label>E-mail</label>

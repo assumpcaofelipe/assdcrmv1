@@ -65,6 +65,12 @@ tr {
   border: solid 2px #151515;
 }
 
+
+ /*Campo id*/
+
+ #id{
+  width: 35px;
+ }
 /* Botões editar e excluir*/
 
 .editar{
@@ -183,7 +189,7 @@ a {
 
 .alert-person-danger {
     background-color: #BF1523 !important;
-    border: solid 2px #151515;
+    border: solid 2px #BF1523;
     color: #ffffff !important;
     font-weight: 500;
     border-radius: 8px;

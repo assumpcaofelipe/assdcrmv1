@@ -90,22 +90,25 @@ a {
   max-width: 300px;
   text-align: center;
 }
-.sucesso {
-  color: #155724;
-  background-color: #d4edda;
-  border: 1px solid #c3e6cb;
+
+/*ALERTAS DE AVISO*/
+
+.alert-person-sucess  {
+    background-color: #04D976 !important;
+    border: solid 2px #04D976;
+    color: #ffffff !important;
+    font-weight: 500;
+    border-radius: 8px;
+    font-family: "Fira Code", monospace;
 }
-.alerta {
-  color: #856404;
-  background-color: #fff3cd;
-  border: 1px solid #ffeeba;
-}
-.erro {
-  color:red;
-  background-color: #f8d7da;
-  border: 1px solid red;
-  background-color: rgb(220, 216, 216);
-  color:red;
+
+.alert-person-danger {
+    background-color: #BF1523 !important;
+    border: solid 2px #BF1523;
+    color: #ffffff !important;
+    font-weight: 500;
+    border-radius: 8px;
+    font-family: "Fira Code", monospace;
 }
 
 .showPassword {

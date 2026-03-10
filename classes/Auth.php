@@ -13,36 +13,43 @@ class Auth
 
     public function login(string $email, string $password)
     {
-        if (empty($email) && empty($password)) {
-        $_SESSION['erro'] = '
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    Preencha todos os campos!
-                </div>
-        ';
+        if (empty($email) ||  empty($password)) {
+            $_SESSION['msg']  = "<div class='alert alert-person-danger ' role='alert'>
+          Preencha todos os campos: nome, e-mail e senha.
+                </div>";
+
             return false;
         }
 
         $email = htmlspecialchars($email);
-        $password = md5(htmlspecialchars($password));
+
+        $senhaForte = password_hash($password, PASSWORD_DEFAULT);
 
         // Consulta no banco de dados;
 
-        $sql = $this->db->query("SELECT * FROM usuarios WHERE email = '$email' AND senha = '$password'");
+        $stmt = $this->db->prepare("SELECT * FROM usuarios WHERE email = :email");
+        $stmt->bindValue(':email', $email);
+        $stmt->execute();
 
-        if ($sql->rowCount() > 0) {
-            $data = $sql->fetch(PDO::FETCH_ASSOC);
 
-            $_SESSION['id'] = $data['id'];
 
-            return true;
+        if ($stmt->rowCount() > 0) {
+
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (password_verify($password, $user['senha'])) {
+
+                $_SESSION['id'] = $user['id'];
+                return true;
+            }
         }
 
+
         // Login inválido
-        $_SESSION['erro'] = '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-             Dados inválidos, tente novamente!
-            </div>
-';
+        $_SESSION['msg']  = "<div class='alert alert-person-danger ' role='alert'>
+          Dados inválidos!
+                </div>";
+
         $_SESSION['email'] = $email;
 
         return false;
