@@ -1,0 +1,11 @@
+
+Função que transforma array em json json_encode($vriavel)
+Problema muita muito comuns em APIS: Politica de CORS em outras palavras o site ou sua api precisa permitir que se façam requisições para poder exibir os dados;
+
+o que são esses caras  
+
+header("Acess-Control-Allow-Origin: *"); = Permiti que qualquer site faça as requisições dentro da minha APIS
+
+header("Acess-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS") = Permiti os métodos;
+
+header(Content-Type: application/json) = Estou informando que retorno da requisição sempre vai ser do tipo json
