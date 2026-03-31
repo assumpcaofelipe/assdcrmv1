@@ -9,9 +9,9 @@ $array = [
 
 try {
     $db = new PDO(
-        "mysql:dbname=assdpainel;host=localhost",
+        "mysql:dbname=assdpainel;host=mysql",
         "root",
-        ""
+        "root"
     );
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
