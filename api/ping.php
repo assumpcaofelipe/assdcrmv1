@@ -4,7 +4,7 @@ require '../config.php';
 
 
 $array['result'] = [
-    'pong' => true
+    'pong' => 'Sucesso conectado!'
 ];
 
 require '../return.php';

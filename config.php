@@ -3,7 +3,7 @@
 //  $array SEMPRE criado antes do try
 
 $array = [
-    'error'  => false,  // sem erro por padrão
+    'error'  => '',  // sem erro por padrão
     'result' => []      // resultado vazio por padrão
 ];
 
