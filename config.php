@@ -9,9 +9,9 @@ $array = [
 
 try {
     $db = new PDO(
-        "mysql:dbname=assdpainel;host=mysql",
+        "mysql:dbname=assdpainel;host=localhost",
         "root",
-        "root"
+        ""
     );
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -20,6 +20,6 @@ try {
     $array['result'] = [];
 
     //  para tudo e retorna o erro!
-    require '../return.php';
+    require 'return.php';
     exit;
 }
