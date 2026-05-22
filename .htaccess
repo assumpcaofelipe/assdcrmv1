@@ -1,0 +1,7 @@
+Options -Indexes
+DirectoryIndex /assdcrmv1/public/index.php
+RewriteEngine On
+RewriteBase /assdcrmv1/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /assdcrmv1/public/index.php?url=$1 [QSA,L]
