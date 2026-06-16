@@ -1,40 +1,66 @@
-# 🚀 API de Usuários
+#  CRM de Leads - Sistema em Desenvolvimento
 
-Este projeto é uma API desenvolvida em PHP para gerenciamento de usuários.
+Este projeto é um sistema de gerenciamento de leads desenvolvido em PHP.
 
-A aplicação permite realizar operações básicas de CRUD (Create, Read, Update, Delete), possibilitando o cadastro, listagem, atualização e remoção de usuários.
+A aplicação tem como objetivo centralizar o cadastro, organização e acompanhamento de potenciais clientes, permitindo registrar empresas, contatos e informações relacionadas ao processo comercial.
 
----
+O projeto está em evolução, iniciando pela construção da API e regras de negócio do backend, juntamente com a interface de cadastro.
 
-## 📌 Sobre o projeto
+##  Sobre o projeto
 
-A API foi criada com o objetivo de praticar conceitos importantes de desenvolvimento backend, como:
+O sistema foi criado para praticar conceitos importantes de desenvolvimento backend e construção de aplicações reais, como:
 
-* Manipulação de requisições HTTP
-* Estruturação de endpoints
-* Organização de código em PHP
-* Retorno de dados em formato JSON
+- Estruturação de aplicações PHP
+- Organização de código utilizando arquitetura MVC
+- Criação e consumo de endpoints
+- Manipulação de requisições HTTP
+- Persistência de dados com MySQL
+- Retorno de dados em formato JSON
+- Implementação de regras de negócio
 
----
+##  Funcionalidades atuais
 
-## ⚙️ Funcionalidades
+### Usuários
+- Cadastro de usuários
+- Listagem de usuários
+- Atualização de usuários
+- Remoção de usuários
 
-* Criar usuários
-* Listar usuários
-* Atualizar usuários
-* Deletar usuários
+### Leads (CRM)
+- Cadastro de empresas
+- Registro de informações comerciais
+- Controle de origem do lead
+- Controle de status da negociação
+- Cadastro de informações do decisor
+- Registro de datas de contato e acompanhamento
 
----
+##  Tecnologias utilizadas
 
-## 🛠️ Tecnologias utilizadas
+- PHP
+- MySQL
+- HTML5
+- CSS3
+- JavaScript
+- JSON
+- API REST
 
-* PHP
-* MySQL
-* JSON
-* API REST
+## Estrutura do projeto
 
----
+O projeto segue uma organização separando responsabilidades:
 
-## 📌 Observação
+- Controllers
+- Views
+- Core
+- Models
+- Rotas da aplicação
 
-Este projeto está em evolução e novas melhorias serão adicionadas futuramente.
+##  Em desenvolvimento
+
+Novas funcionalidades serão adicionadas futuramente, como:
+
+- Autenticação de usuários
+- Dashboard comercial
+- Filtros de leads
+- Histórico de interações
+- Melhorias na API
+- Integrações externas
