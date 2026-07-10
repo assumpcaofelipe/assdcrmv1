@@ -1,5 +1,10 @@
 <?php
 
+
+const BASE_URL = '/assdcrmv1';
+
+
+
 //  $array SEMPRE criado antes do try
 
 $array = [
