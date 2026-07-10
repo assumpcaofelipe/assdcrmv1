@@ -45,7 +45,19 @@ class Leads
   }
 
 
+  public function retornarListaLeads(): array
+  {
+    $sql = "SELECT * FROM leads";
+    $sql = $this->pdo->query($sql);
+
+    if ($sql->rowCount() > 0) {
+      return $sql->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+      return array();
+    }
+  }
+
 
 }
 
-require_once '../config.php';
+

@@ -1,10 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 
 
 body {
   height: 100vh;
-  background-color:#E6E6E6;
-  font-family: "Inter", sans-serif;
+  background-color:#e8e8e8;
+  color:#151515;
+  font-family: "Fira Code", monospace;
   font-weight: 600;
 }
 
@@ -29,7 +32,9 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     padding:20px;
-    
+    margin-top: 25px;
+    border: solid 1px #151515;
+    background-color: #f3f3f3;
 }
 
 
@@ -43,18 +48,38 @@ body {
     gap:6px;
 }
 
+legend, .campo label 
+
+{
+  font-weight: 700;
+  text-transform: uppercase;
+}
 
 .campo input,
 .campo select
 {
     width: 100%;
     height: 30px;
+    background-color: #f3f3f3;
+    border:solid 1px #151515;
+    color:#151515;
+   font-family: "Fira Code", monospace;;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .campo textarea{
     height:150px;
     padding: 5px;
     resize: vertical;
+    font-family: "Fira Code", monospace;
+    background-color: #f3f3f3;
+    border:solid 1px #151515;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 300;
+    color:#151515;
 }
 
 .acoes{
@@ -69,12 +94,32 @@ body {
   height: 52px;
   background-color: #ff4500;
   border: 1px #ff4500;
-  border-radius: 6px;
- font-family: "Inter", sans-serif;
-  color: #fff;
+  border-radius: 8px;
+ font-family: "Fira Code", monospace;
+  color: #f3f3f3;
   font-weight: 700;
   font-size: 1.3rem;
   cursor: pointer;
   margin-top: 0px;
   margin-bottom: 20px;
+}
+
+/*ALERTAS DE AVISO*/
+
+.alert-person-sucess  {
+    background-color: #04D976 !important;
+    border: solid 2px #04D976;
+    color: #ffffff !important;
+    font-weight: 500;
+    border-radius: 8px;
+    font-family: "Fira Code", monospace;
+}
+
+.alert-person-danger {
+    background-color: #df4b57dd !important;
+    border: solid 2px #BF1523;
+    color: #ffffff !important;
+    font-weight: 500;
+    border-radius: 8px;
+    font-family: "Fira Code", monospace;
 }
