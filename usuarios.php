@@ -17,6 +17,8 @@ if (!$auth->check()) {
 $usuario = new Usuario($db);
 $lista = $usuario->retornarListaUsuarios();
 
+
+
 ?>
 
 <!DOCTYPE html>

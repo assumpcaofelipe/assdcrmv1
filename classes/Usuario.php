@@ -62,7 +62,7 @@ class Usuario
   {
     
 
-    $sql = "UPDATE usuarios set  nome = :nome, email = :email WHERE id = :id";
+    $sql = "UPDATE usuarios SET nome = :nome, email = :email WHERE id = :id";
     $sql = $this->pdo->prepare($sql);
     $sql->bindValue(':nome', $nome);
     $sql->bindValue(':email', $email);

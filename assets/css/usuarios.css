@@ -1,8 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
+
+:root {
+ --color--primary:#fffcf5;
+ --color--primary-dark:#0F151E;
+ --color-primary-cta:#ff4500;
+
+}
+
+
 body {
   height: 100vh;
-  background-color: #e8e8e8;
+  background-color: var(--color--primary);
 }
 
 .container {
@@ -25,6 +34,8 @@ body {
   font-size: 23px;
     font-family: "Fira Code", monospace;
     color: #151515;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 
@@ -33,6 +44,8 @@ body {
 .table{
   max-width: 80%;
   margin: 0 auto;
+  background-color: var(--color--primary);
+  border: solid 1px var(--color--primary-dark);
 }
 
 tr {
