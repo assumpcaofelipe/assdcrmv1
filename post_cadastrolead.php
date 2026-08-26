@@ -4,6 +4,8 @@ require_once 'config.php';
 require_once 'classes/Lead.php';
 require_once 'classes/CadastroLeads.php';
 
+$cadastroLeads = new CadastroLeads($db);
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -11,8 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $empresa_nome = htmlspecialchars(trim($_POST['empresa_nome'] ?? ''));
   $email = filter_var($_POST['email'] ?? null, FILTER_VALIDATE_EMAIL);
   $telefone = htmlspecialchars(trim($_POST['telefone'] ?? ''));
-  $empresa_site = htmlspecialchars(trim($_POST['empresa_site']?? ''));
-  $decisor_nome = htmlspecialchars(trim($_POST['decisor_nome']?? '')) ;
+  $empresa_site = htmlspecialchars(trim($_POST['empresa_site'] ?? ''));
+  $decisor_nome = htmlspecialchars(trim($_POST['decisor_nome'] ?? ''));
   $decisor_cargo = htmlspecialchars(trim($_POST['decisor_cargo'] ?? ''));
   $decisor_linkedin = htmlspecialchars(trim($_POST['decisor_linkedin'] ?? ''));
   $status = htmlspecialchars($_POST['status'] ?? '');
@@ -29,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $observacoes = htmlspecialchars(trim($_POST['observacoes'] ?? ''));
 
+  // Adicionar
 
   if (!empty($empresa_nome)) {
 
@@ -39,19 +42,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $lead->decisor_nome = $decisor_nome;
     $lead->decisor_cargo = $decisor_cargo;
     $lead->decisor_linkedin = $decisor_linkedin;
-    $lead->status = !empty($status) ? $status : 'novo';
+    $lead->status = !empty($status) ? $status : 'prospeccao';
     $lead->origem = $origem;
     $lead->primeiro_contato = $primeiro_contato;
     $lead->proximo_contato = $proximo_contato;
     $lead->observacoes = $observacoes;
 
+   
+    if ($cadastroLeads->criarLead($lead)) {
 
-    $cadastroLeads = new CadastroLeads($db);
-    $cadastroLeads->criarLead($lead);
+        $_SESSION['msg']  = "<div class='alert alert-person-sucess ' role='alert'>
+        Cadastro realizado com sucesso!
+</div>";
+    } else {
 
-    header("Location: " . BASE_URL . "/cadastro");
+      $_SESSION['msg'] = "
+        <div class='alert alert-person-danger' role='alert'>
+            Já existe um cadastro com o nome dessa empresa.
+        </div>";
+    }
 
+    header("Location: lista.php");
+    exit;
   } else {
-    header("Location: " . BASE_URL . "/cadastrolead");
+
+    $_SESSION['msg'] = "
+    <div class='alert alert-person-danger' role='alert'>
+        O nome da empresa é obrigatório.
+    </div>";
+
+    header("Location: lista.php");
+    exit;
   }
 }

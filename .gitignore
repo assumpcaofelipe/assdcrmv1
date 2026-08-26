@@ -2,3 +2,7 @@
 /node_modules/
 /.env
 /docker-compose.override.yml
+/filtro.php
+/teste.php
+/.todo.txt
+

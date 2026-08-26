@@ -8,7 +8,7 @@ $auth = new Auth($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($auth->login($_POST['email'], $_POST['password'])) {
-    header('Location: usuarios.php');
+    header('Location: lista.php');
     exit;
   } else {
     header('Location: login.php');

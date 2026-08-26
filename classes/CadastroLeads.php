@@ -15,9 +15,8 @@ class CadastroLeads
 
   private function leadVerificado(Lead $lead)
   {
-    $sql = "SELECT 1 FROM leads WHERE email = :email AND empresa_nome = :empresa_nome LIMIT 1";
-    $sql = $this->pdo->prepare($sql);
-    $sql->bindValue(':email', $lead->email);
+    $sql = "SELECT 1 FROM leads WHERE empresa_nome = :empresa_nome LIMIT 1";
+    $sql = $this->pdo->prepare($sql);;
     $sql->bindValue(':empresa_nome', $lead->empresa_nome);
     $sql->execute();
 
@@ -26,6 +25,8 @@ class CadastroLeads
     } else {
       return false;
     }
+
+     
   }
 
 
@@ -67,7 +68,7 @@ class CadastroLeads
         $sql->bindValue(':decisor_cargo', $lead->decisor_cargo);
         $sql->bindValue(':decisor_linkedin', $lead->decisor_linkedin);
         $sql->bindValue(':telefone', $lead->telefone);
-        $sql->bindValue(':email', $lead->email);
+        $sql->bindValue(':email', $lead->email !== '' ? $lead->email : null, $lead->email !== '' ? PDO::PARAM_STR : PDO::PARAM_NULL);
         $sql->bindValue(':observacoes', $lead->observacoes);
         $sql->bindValue(':primeiro_contato', $lead->primeiro_contato?->format('Y-m-d H:i:s'));
         $sql->bindValue(':proximo_contato', $lead->proximo_contato?->format('Y-m-d H:i:s'));
@@ -94,6 +95,20 @@ class CadastroLeads
       return array();
     }
   }
+
+
+public function buscarLeadporStatus(string $status): array
+{
+  $sql = "SELECT * FROM leads WHERE status = :status";
+  $sql = $this->pdo->prepare($sql);
+  $sql->bindValue(':status', $status);
+  $sql->execute();
+  return $sql->fetchAll(PDO::FETCH_ASSOC);
+  
+  }
+ 
+
+
 
   public function buscarLeadPorId(int $id): ?Lead
 {
@@ -133,6 +148,27 @@ class CadastroLeads
 
     return $lead;
 }
+
+public function retornarListaLeadsPaginados(int $limite, int $offset)
+{
+  $sql = "SELECT * FROM leads ORDER BY id LIMIT :limite OFFSET :offset";
+  $sql = $this->pdo->prepare($sql);
+  $sql->bindValue(':limite', $limite, PDO::PARAM_INT);
+  $sql->bindValue(':offset', $offset, PDO::PARAM_INT);
+  $sql->execute();
+
+  return $sql->fetchAll(PDO::FETCH_ASSOC);
+
+}
+
+public function contarLeads()
+{
+   $sql = "SELECT COUNT(*) FROM leads";
+   $sql = $this->pdo->query($sql);
+   
+   return $sql->fetchColumn();
+}
+
 
  public function EditarLead(Lead $lead)
  {
@@ -176,6 +212,14 @@ class CadastroLeads
 
     return $sql->execute();
  
+ }
+
+ public function excluirLead($id)
+ {
+    $sql = "DELETE FROM leads WHERE id = :id";
+    $sql = $this->pdo->prepare($sql);
+    $sql->bindValue(':id', $id);
+    $sql->execute();
  }
 
 }

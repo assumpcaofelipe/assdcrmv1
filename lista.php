@@ -9,14 +9,59 @@ require_once 'classes/CadastroLeads.php';
 
 $auth = new Auth($db);
 
+
 if (!$auth->check()) {
     header('Location: login.php');
     exit;
 }
 
-// Retornar lista de Leads
-$CadastroLeads = new CadastroLeads($db);
-$lista = $CadastroLeads->retornarListaLeads();
+$statusRotulo = [
+    'prospeccao' => 'Prospectado',
+    'contato_inicial' => 'Fazer Primeiro Contato',
+    'apresentacao_solucao' => 'Reunião Marcada',
+    'proposta_enviada' => 'Proposta Enviada',
+    'negociando' => 'Negociando',
+    'fechado' => 'Fechado',
+    'pos_venda' => 'Pós Venda',
+    'perdido' => 'Perdido',
+];
+
+$cadastroLeads = new CadastroLeads($db);
+
+// Paginação;
+
+
+$limite = 5;
+
+$pg = filter_input(INPUT_GET, 'p', FILTER_VALIDATE_INT);
+
+if ($pg === false || $pg === null || $pg < 1) {
+    $pg = 1;
+}
+
+$offset = ($pg - 1) * $limite;
+
+// Total de leads
+$total = $cadastroLeads->contarLeads();
+
+// Total de páginas
+$paginas = ceil($total / $limite);
+
+// Leads da página atual
+$lista = $cadastroLeads->retornarListaLeadsPaginados($limite, $offset);
+
+
+
+// Filtro
+
+$situacao = filter_input(INPUT_POST, 'status');
+
+if (isset($situacao) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $lista = $cadastroLeads->buscarLeadporStatus($situacao);
+}
+
+
 
 ?>
 
@@ -39,17 +84,51 @@ $lista = $CadastroLeads->retornarListaLeads();
 
     <div class="container">
 
-        <div class="title">
-            <?php if (!empty($_SESSION['msg'])) {
-                echo $_SESSION['msg'];
-                unset($_SESSION['msg']);
-            }
-            ?>
 
-             <form action="" method="post">
-                <input type="search" name="" id="" placeholder="Pesquisar Contato...">
-             </form>
-            <a href="cadastrolead"> <button class="add">Adicionar</button></a>
+        <div class="header-top">
+
+            <div class="search">
+                <form action="" method="get">
+                    <input type="search" name="" id="" placeholder="Pesquisar Contato...">
+                </form>
+            </div>
+
+            <div class="filtter">
+                <form action="" method="post">
+                    <select name="status" id="status">
+
+                        <?php foreach ($statusRotulo as $valor => $rotulo): ?>
+
+                            <option
+                                value="<?= $valor ?>"
+                                <?= $situacao === $valor ? 'selected' : '' ?>>
+                                <?= $rotulo ?>
+                            </option>
+
+                        <?php endforeach; ?>
+
+                    </select>
+
+                    <input type="submit" value="Filtrar">
+                </form>
+            </div>
+
+            <div class="title">
+                <?php if (!empty($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+                ?>
+            </div>
+
+            <div>
+                <a href="cadastrolead"> <button class="assdtec-btn">Adicionar</button></a>
+            </div>
+
+
+
+
+
 
         </div><br><br>
 
@@ -58,24 +137,36 @@ $lista = $CadastroLeads->retornarListaLeads();
             <thead>
                 <tr>
                     <th scope="col">Empresa</th>
-                    <th scope="col">E-mail</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Próximo Contato</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
             <?php foreach ($lista as $lead): ?>
                 <tr>
                     <td><?= $lead['empresa_nome']; ?></td>
-                    <td><?= $lead['email']; ?></td>
-                    <td><?= $lead['status']; ?></td>
+                    <td>
+                        <?= match ($lead['status']) {
+                            'prospeccao' => 'Prospectado',
+                            'contato_inicial' => 'Fazer Primeiro Contato',
+                            'apresentacao_solucao' => 'Reunião Marcada',
+                            'proposta_enviada' => 'Proposta Enviada',
+                            'negociando' => 'Negociando',
+                            'fechado' => 'Fechado',
+                            'pos_venda' => 'Pós Venda',
+                            'perdido' => 'Perdido',
+                            default => 'Prospectado'
+                        } ?>
+                    </td>
+                    <td><?= $lead['proximo_contato']; ?></td>
                     <td>
                         <a href="editar_lead.php?id=<?= $lead['id']; ?>">
-                          <button class="edit">
-                            <i class="bi bi-pencil"></i>
-                        </button>
+                            <button class="edit">
+                                <i class="bi bi-pencil"></i>
+                            </button>
                         </a>
-                       
-                        <a href="excluir.php?id=<?= $lead['id']; ?>"
+
+                        <a href="excluir_lead.php?id=<?= $lead['id']; ?>"
                             onclick="return confirm(' Essa ação é irreversível. Deseja continuar?')">
                             <button
                                 title="Excluir Usuário"
@@ -85,8 +176,33 @@ $lista = $CadastroLeads->retornarListaLeads();
 
                     </td>
                 </tr>
+
             <?php endforeach; ?>
-        </table>
+        </table><br><br>
+
+
+        <nav aria-label="Navegação de página">
+
+            <ul class="pagination justify-content-center">
+
+                <?php for ($q = 1; $q <= $paginas; $q++): ?>
+
+                    <li class="page-item <?= $q == $pg ? 'active' : ''; ?>">
+
+                        <a
+                            class="page-link"
+                            href="lista.php?p=<?= $q; ?>">
+                            <?= $q; ?>
+                        </a>
+
+                    </li>
+
+                <?php endfor; ?>
+
+            </ul>
+
+        </nav>
+
 
     </div><!--Container-->
 
