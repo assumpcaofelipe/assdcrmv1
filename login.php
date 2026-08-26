@@ -8,7 +8,7 @@ $auth = new Auth($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($auth->login($_POST['email'], $_POST['password'])) {
-    header('Location: usuarios.php');
+    header('Location: lista.php');
     exit;
   } else {
     header('Location: login.php');
@@ -27,9 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/login.css">
   <!-- CSS do Bootstrap -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/login.css">
   <title>Login - Assumpção Desenvolvimento</title>
 </head>
 
