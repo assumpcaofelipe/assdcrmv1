@@ -1,8 +1,10 @@
 /vendor/
 /node_modules/
 /.env
-/docker-compose.override.yml
+/docker-compose.yml
 /filtro.php
 /teste.php
 /.todo.txt
-
+/config.php     
+*.zip
+*.log     
