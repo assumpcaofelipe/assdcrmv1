@@ -68,8 +68,8 @@ $lead->observacoes = $observacoes;
 
 $editLeads->EditarLead($lead);
 
-$_SESSION['msg']  = "<div class='assdtec-notification assdtec-notification--success' >
-        Cadastro editado com sucesso!
+$_SESSION['msg']  = "<div class='assdtec-btn assdtec-btn-success' >
+         editado com sucesso!
      </div>";
 header("Location: lista.php");
 exit;

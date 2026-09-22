@@ -1,5 +1,19 @@
 <?php
-//session_start();
+session_start();
+require_once 'classes/Auth.php';
+require_once 'config.php';
+require_once 'classes/Lead.php';
+require_once 'classes/CadastroLeads.php';
+
+//Verificação parao usuário está logado:
+
+$auth = new Auth($db);
+
+
+if (!$auth->check()) {
+    header('Location: login.php');
+    exit;
+}
 
 
 ?>
@@ -14,7 +28,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/cadastro.css">
+  <link rel="stylesheet" href="assets/css/cadastro.css">
 
   <title>Cadastro</title>
 
@@ -27,7 +41,7 @@
   <div class="container">
 
 
-    <form action="<?= BASE_URL ?>/post_cadastrolead.php" class="validacao-forms" method="post">
+    <form action="post_cadastrolead.php" class="validacao-forms" method="post">
 
     
 

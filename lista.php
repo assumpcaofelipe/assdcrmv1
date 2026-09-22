@@ -72,10 +72,10 @@ if (isset($situacao) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS do Bootstrap -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/lista.css">
+    <link rel="stylesheet" href="/assets/css/lista.css">
     <title>Leads</title>
 </head>
 
@@ -93,8 +93,8 @@ if (isset($situacao) && $_SERVER['REQUEST_METHOD'] === 'POST') {
                 </form>
             </div>
 
-            <div class="filtter">
-                <form action="" method="post">
+            <div class="filter">
+                <form class="form-filter" action="" method="post">
                     <select name="status" id="status">
 
                         <?php foreach ($statusRotulo as $valor => $rotulo): ?>
@@ -109,7 +109,7 @@ if (isset($situacao) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     </select>
 
-                    <input type="submit" value="Filtrar">
+                    <input type="submit" value="Buscar">
                 </form>
             </div>
 
@@ -122,7 +122,7 @@ if (isset($situacao) && $_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div>
-                <a href="cadastrolead"> <button class="assdtec-btn">Adicionar</button></a>
+                <a href="cadastro.php"> <button class="assdtec-btn">Adicionar</button></a>
             </div>
 
 

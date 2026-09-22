@@ -41,7 +41,7 @@ $lead = $CadastroLeads->buscarLeadPorId($id);
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/cadastro.css">
+  <link rel="stylesheet" href="assets/css/cadastro.css">
 
   <title>Editar</title>
 

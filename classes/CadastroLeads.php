@@ -208,7 +208,12 @@ public function contarLeads()
         $lead->proximo_contato?->format('Y-m-d H:i:s')
     );
     $sql->bindValue(':status', $lead->status);
-    $sql->bindValue(':origem', $lead->origem);
+ $sql->bindValue(
+    ':origem',
+    $lead->origem !== '' ? $lead->origem : null,
+    $lead->origem !== '' ? PDO::PARAM_STR : PDO::PARAM_NULL
+);
+
 
     return $sql->execute();
  

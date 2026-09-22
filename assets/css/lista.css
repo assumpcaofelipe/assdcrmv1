@@ -9,8 +9,8 @@
 }
 
 .assdtec-btn {
-  min-width: 217px;
-  height: 55px;
+ 
+  height: 40px;
 
   border-radius: 8px;
   border: 2px solid #151515;
@@ -23,7 +23,7 @@
   font-size: 18px;
   font-family: "Fira Code", monospace;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform:uppercase;
 
   color: #f0f2f2;
 
@@ -42,30 +42,10 @@
   background-color: #151515;
 }
 
-.assdtec-btn-sucess {
-  min-width: 217px;
-  height: 55px;
-
-  border-radius: 8px;
-  border: 2px solid #151515;
-  box-shadow: 4px 4px 0 #453a3a;
-
-  padding: 5px 25px;
-
-  background-color: var(--color-btn-success);
-
-  font-size: 18px;
-  font-family: "Fira Code", monospace;
-  font-weight: 600;
-  text-transform: uppercase;
-
+.assdtec-btn-success {
+  background-color: #04d976;
   color: #f0f2f2;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  cursor: pointer;
 }
 
 .assdtec-notification {
@@ -113,10 +93,11 @@ body {
 
 .header-top {
   display: grid;
-  grid-template-columns: 3fr 2fr 1fr;
+  grid-template-columns: 2fr 1fr 2fr 1fr;
   align-items: center;
   padding: 20px 20px;
   gap: 10px;
+  
 }
 
 .title {
@@ -137,14 +118,56 @@ body {
 
 input[type="search"] {
   width: 100%;
-  max-width: 550px;
-  height: 55px;
-  padding: 8px;
+  height: 40px;
+ 
   font-family: "Fira Code", monospace;
-  color: #151515;
   border-radius: 8px;
-  border: 1px solid #151515;
+  border: 2px solid #151515;
+  box-shadow: 4px 4px 0 #151515;
+  padding: 5px 25px;
+
 }
+
+/* Filtro */
+
+.form-filter{
+  display: flex;
+  gap:20px;
+}
+
+select{
+  height: 40px;
+  font-family: "Fira Code", monospace;
+  border-radius: 8px;
+  border: 2px solid #151515;
+  box-shadow: 4px 4px 0 #151515;
+  padding: 5px 25px;
+}
+
+input[type="submit"]{
+   width: 140px;
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid #151515;
+  box-shadow: 4px 4px 0 #151515;
+
+  padding: 5px 25px;
+
+  background-color:#fffcf5;
+
+  font-size: 18px;
+  font-family: "Fira Code", monospace;
+  font-weight: 600;
+  text-transform:uppercase;
+
+  color:#ff4500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
 
 /* Botão add*/
 

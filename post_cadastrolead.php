@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $decisor_cargo = htmlspecialchars(trim($_POST['decisor_cargo'] ?? ''));
   $decisor_linkedin = htmlspecialchars(trim($_POST['decisor_linkedin'] ?? ''));
   $status = htmlspecialchars($_POST['status'] ?? '');
-  $origem = htmlspecialchars($_POST['origem'] ?? '');
+  $origem = $_POST['origem'] ? htmlspecialchars($_POST['origem']) : null;
 
   // Datas
   $primeiro_contato = !empty($_POST['primeiro_contato'])
@@ -48,11 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $lead->proximo_contato = $proximo_contato;
     $lead->observacoes = $observacoes;
 
-   
+    
     if ($cadastroLeads->criarLead($lead)) {
 
-        $_SESSION['msg']  = "<div class='alert alert-person-sucess ' role='alert'>
-        Cadastro realizado com sucesso!
+        $_SESSION['msg']  = "<div class='assdtec-btn assdtec-btn-success' role='alert'>
+        Cadastrado com sucesso!
 </div>";
     } else {
 
