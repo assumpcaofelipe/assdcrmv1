@@ -205,7 +205,7 @@ public function contarLeads()
     );
     $sql->bindValue(
         ':proximo_contato',
-        $lead->proximo_contato?->format('Y-m-d H:i:s')
+        $lead->proximo_contato?->format('Y-m-d H:i:s') 
     );
     $sql->bindValue(':status', $lead->status);
  $sql->bindValue(
