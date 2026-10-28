@@ -3,7 +3,7 @@ session_start();
 require_once 'classes/Auth.php';
 require_once 'config.php';
 require_once 'classes/Lead.php';
-require_once 'classes/CadastroLeads.php';
+
 
 //Verificação parao usuário está logado:
 
@@ -14,6 +14,24 @@ if (!$auth->check()) {
     header('Location: login.php');
     exit;
 }
+
+
+try {
+    if (!empty($_GET['action']) and ($_GET['action']) == 'delete') {
+
+        $id = $_GET['id'];
+        Lead::delete($id);
+    }
+
+    $leads = Lead::all();
+ 
+
+} catch (Exception $e) {
+    print $e->getMessage();
+}
+
+
+$items = '';
 
 
 // Legenda de tradução do status que veio do banco.
@@ -29,49 +47,31 @@ $statusRotulo = [
     'perdido' => 'Perdido',
 ];
 
-$cadastroLeads = new CadastroLeads($db);
-
-// Paginação;
 
 
-/*$limite = 5;
-
-$pg = filter_input(INPUT_GET, 'p', FILTER_VALIDATE_INT);
-
-if ($pg === false || $pg === null || $pg < 1) {
-    $pg = 1;
-}
-
-$offset = ($pg - 1) * $limite;
-
-// Total de leads
-$total = $cadastroLeads->contarLeads();
-
-// Total de páginas
-$paginas = ceil($total / $limite); */
-
-$items = '';
 
 // Leads da página atual
 
- $contatos = $cadastroLeads->retornarListaLeads();
 
-       
-   foreach($contatos as $contato)
+ if($leads) {
+
+   foreach($leads as $lead)
     {
         $item = file_get_contents('templates/item.html');
 
-        $item = str_replace('{empresa}', $contato['empresa_nome'], $item);
-        $item = str_replace('{status}', $statusRotulo[$contato['status']], $item);
-        $item = str_replace('{proximocontato}', $contato['proximo_contato'] ?? '', $item);
-
+        $item = str_replace('{id}', $lead['id'], $item); 
+        $item = str_replace('{empresa}', $lead['empresa_nome'], $item);
+        $item = str_replace('{status}', $statusRotulo[$lead['status']], $item);
+        $item = str_replace('{proximocontato}', $lead['proximo_contato'] ?? '', $item);
 
         // Colocar para exibir a informação de contato
 
-        $items.= $item;
+        $items .= $item;
     }
      
-    
+
+ }
+
 
 $listaContatos = file_get_contents('templates/lista.html');
 $listaContatos = str_replace('{items}', $items, $listaContatos);
@@ -81,14 +81,5 @@ $listaContatos = str_replace('{items}', $items, $listaContatos);
 print $listaContatos;
 
 
-// Filtro
-
-/*$situacao = filter_input(INPUT_POST, 'status');
-
-if (isset($situacao) && $_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $lista = $cadastroLeads->buscarLeadporStatus($situacao);
-}
-*/
 
 

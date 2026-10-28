@@ -1,0 +1,21 @@
+<tr>
+  <td>{empresa}</td>
+  <td>{status}</td>
+  <td>{proximocontato}</td>
+  <td>
+    <a href="lead_form.php?action=edit&id={id}">
+      <button class="edit">
+        <i class="bi bi-pencil"></i>
+      </button>
+    </a>
+
+    <a
+      href="excluir_lead.php?id=<?= $lead['id']; ?>"
+      onclick="return confirm(' Essa ação é irreversível. Deseja continuar?');"
+    >
+      <button title="Excluir Usuário" class="delete">
+        <i class="bi bi-trash3"></i>
+      </button>
+    </a>
+  </td>
+</tr>
